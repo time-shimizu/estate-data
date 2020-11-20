@@ -25,7 +25,7 @@ class SellinfosController < ApplicationController
   end
 
   def google_api_geocode(sellinfo)
-    res = Http.client(base_url).get url(sellinfo)
+    res = client(base_url).get url(sellinfo)
     raise HttpFatalError, '通信に失敗しました' unless res.success?
 
     body = JSON.parse(res.body)
@@ -34,6 +34,13 @@ class SellinfosController < ApplicationController
     location = body['results'][0]['geometry']['location']
     @sellinfo.lat = location['lat']
     @sellinfo.lng = location['lng']
+  end
+
+  def client(url)
+    Faraday.new url do |faraday|
+      faraday.request :url_encoded
+      faraday.adapter Faraday.default_adapter
+    end
   end
 
   def base_url
