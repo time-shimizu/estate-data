@@ -3,22 +3,23 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(model: @sellinfo, local: true) do |f| %>
+      <%= render 'shared/error_messages', object: @sellinfo %>
       <%= f.label :address, '住所' %>
       <%= f.text_field :address %>
 
       <%= f.label :price, '価格(万円)' %>
       <%= f.number_field :email %>
 
-      <%= f.label :ares, '面積(m2)' %>
+      <%= f.label :area, '面積(m2)' %>
       <%= f.number_field :area, step: "0.01" %>
 
-      <%= f.label :ares, '利回り(%)' %>
+      <%= f.label :yield, '利回り(%)' %>
       <%= f.text_field :yield, step: "0.01" %>
 
-      <%= f.label :ares, '業者名/名前' %>
+      <%= f.label :name, '業者名/名前' %>
       <%= f.text_field :name %>
 
-      <%= f.label :ares, '入手会' %>
+      <%= f.label :meeting, '入手会' %>
       <%= f.text_field :meeting %>
 
       <%= f.submit "登録", class: "btn btn-primary" %>

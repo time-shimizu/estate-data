@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root 'statics#home'
+  root 'sellinfos#new'
   resources :sellinfos
 end
