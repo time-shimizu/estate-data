@@ -1,4 +1,5 @@
 class SellinfosController < ApplicationController
+  class HttpFatalError < StandardError; end
 
   def index
     #create失敗した後、リロードするとindexにとんでエラー起きるので
@@ -10,7 +11,7 @@ class SellinfosController < ApplicationController
 
   def create
     @sellinfo = Sellinfo.new(sellinfo_params)
-    google_api_geocode(@sellinfo)
+    google_api_geocode(@sellinfo) if @sellinfo.valid?
     if @sellinfo.save
       flash[:success] = '登録できました'
       redirect_to root_path
@@ -21,7 +22,7 @@ class SellinfosController < ApplicationController
 
   private
   def sellinfo_params
-    params.require(:sellinfo).permit(:address, :price, :area, :yield, :name, :meeting)
+    params.require(:sellinfo).permit(:address, :price, :area, :yield, :kind, :name, :meeting)
   end
 
   def google_api_geocode(sellinfo)
