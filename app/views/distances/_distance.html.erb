@@ -1,0 +1,28 @@
+<% sellinfo = distance.sellinfo %>
+<% buyinfo = distance.buyinfo %>
+<li>
+  <div class = 'row'>
+    <div class = 'col-xs-6'>
+      <p>売り情報</p>
+      <ul>
+        <li>[住所]<%= sellinfo.address %></li>
+        <li>[価格]<%= sellinfo.price %>万円</li>
+        <li>[面積]<%= sellinfo.area %>m2</li>
+        <li>[利回り]<%= sellinfo.yield %>%</li>
+        <li>[業者名/名前]<%= sellinfo.name %></li>
+        <li>[入手会]<%= sellinfo.meeting %></li>
+      </ul>
+    </div>
+    <div class = 'col-xs-6'>
+      <p>買い情報</p>
+      <ul>
+        <li>[住所]<%= buyinfo.address %></li>
+        <li>[価格]<%= buyinfo.price %>万円</li>
+        <li>[面積]<%= buyinfo.area %>m2</li>
+        <li>[業者名/名前]<%= buyinfo.name %></li>
+        <li>[入手会]<%= buyinfo.meeting %></li>
+        <li>[メモ]<%= buyinfo.memo %></li>
+      </ul>
+    </div>
+  </div>
+</li>

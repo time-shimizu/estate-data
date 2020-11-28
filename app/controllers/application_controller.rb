@@ -55,8 +55,9 @@ class ApplicationController < ActionController::Base
   end
 
   def resister_distance(sellinfo,buyinfo)
+    return if sellinfo.lat.nil? || buyinfo.lat.nil?
     if  Distance.where('(sellinfo_id=?) AND (buyinfo_id=?)',sellinfo.id,buyinfo.id).blank?
-      distance = haversine_distance([sellinfo.lat, sellinfo.lng],[buyinfo.lat, buyinfo.id])
+      distance = haversine_distance(latlng1: [sellinfo.lat, sellinfo.lng],latlng2: [buyinfo.lat, buyinfo.lng])
       Distance.create(sellinfo_id: sellinfo.id, buyinfo_id: buyinfo.id, distance: distance)
     end
   end
