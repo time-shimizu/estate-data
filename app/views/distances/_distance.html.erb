@@ -1,5 +1,6 @@
 <% sellinfo = distance.sellinfo %>
 <% buyinfo = distance.buyinfo %>
+<% kinds = {'land' => '土地', 'building' => '物件'} %>
 <li>
   <div class = 'row'>
     <div class = 'col-xs-12 col-sm-6'>
@@ -11,6 +12,7 @@
         <li>[利回り]<%= sellinfo.yield %>%</li>
         <li>[業者名/名前]<%= sellinfo.name %></li>
         <li>[入手会]<%= sellinfo.meeting %></li>
+        <li>[種類]<%= kinds[sellinfo.kind] %></li>
       </ul>
     </div>
     <div class = 'col-xs-12 col-sm-6'>
@@ -22,6 +24,7 @@
         <li>[業者名/名前]<%= buyinfo.name %></li>
         <li>[入手会]<%= buyinfo.meeting %></li>
         <li>[メモ]<%= buyinfo.memo %></li>
+        <li>[種類]<%= kinds[buyinfo.kind] %></li>
       </ul>
     </div>
   </div>
