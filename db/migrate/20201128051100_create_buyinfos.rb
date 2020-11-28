@@ -6,9 +6,8 @@ class CreateBuyinfos < ActiveRecord::Migration[6.0]
       t.float :lng
       t.integer :price
       t.float :area
-      t.integer :kind
+      t.integer :kind, null: false, default: 0
       t.string :name
-      t.string :string
       t.string :meeting
       t.string :memo
 
