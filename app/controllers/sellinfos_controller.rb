@@ -12,6 +12,10 @@ class SellinfosController < ApplicationController
     @sellinfo = Sellinfo.new(sellinfo_params)
     google_api_geocode(@sellinfo) if @sellinfo.valid?
     if @sellinfo.save
+      buyinfos = Buyinfo.all
+      buyinfos.each do |buyinfo|
+        resister_distance(@sellinfo,buyinfo)
+      end
       flash[:success] = '登録できました'
       redirect_to root_path
     else
