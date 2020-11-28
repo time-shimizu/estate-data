@@ -1,5 +1,4 @@
 class SellinfosController < ApplicationController
-  class HttpFatalError < StandardError; end
 
   def index
     #create失敗した後、リロードするとindexにとんでエラー起きるので
@@ -23,36 +22,5 @@ class SellinfosController < ApplicationController
   private
   def sellinfo_params
     params.require(:sellinfo).permit(:address, :price, :area, :yield, :kind, :name, :meeting)
-  end
-
-  def google_api_geocode(sellinfo)
-    res = client(base_url).get url(sellinfo)
-    raise HttpFatalError, '通信に失敗しました' unless res.success?
-
-    body = JSON.parse(res.body)
-    return if body['error_message'].present? || body['results'].blank?
-
-    location = body['results'][0]['geometry']['location']
-    @sellinfo.lat = location['lat']
-    @sellinfo.lng = location['lng']
-  end
-
-  def client(url)
-    Faraday.new url do |faraday|
-      faraday.request :url_encoded
-      faraday.adapter Faraday.default_adapter
-    end
-  end
-
-  def base_url
-    'https://maps.googleapis.com/maps/api/geocode/'
-  end
-
-  def url(sellinfo)
-    'json?' + URI.encode_www_form(address: sellinfo.address, key: api_key)
-  end
-
-  def api_key
-    ENV['GOOGLE_MAP_API_KEY']
   end
 end
