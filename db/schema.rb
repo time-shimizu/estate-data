@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_051100) do
+ActiveRecord::Schema.define(version: 2020_11_28_065500) do
 
   create_table "buyinfos", force: :cascade do |t|
     t.string "address"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 2020_11_28_051100) do
     t.string "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "distances", force: :cascade do |t|
+    t.integer "sellinfo_id"
+    t.integer "buyinfo_id"
+    t.float "distance"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["buyinfo_id"], name: "index_distances_on_buyinfo_id"
+    t.index ["sellinfo_id"], name: "index_distances_on_sellinfo_id"
   end
 
   create_table "sellinfos", force: :cascade do |t|
