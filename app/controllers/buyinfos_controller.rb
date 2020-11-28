@@ -8,8 +8,10 @@ class BuyinfosController < ApplicationController
     google_api_geocode(@buyinfo) if @buyinfo.valid? && @buyinfo.address != '東京23区'
     if @buyinfo.save
       sellinfos = Sellinfo.all
-      sellinfos.each do |sellinfo|
-        resister_distance(sellinfo,@buyinfo)
+      if sellinfos
+        sellinfos.each do |sellinfo|
+          resister_distance(sellinfo,@buyinfo)
+        end
       end
       flash[:success] = '登録できました'
       redirect_to new_buyinfo_path
