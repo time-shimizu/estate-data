@@ -7,11 +7,26 @@
       <%= f.label :address, '住所' %>
       <%= f.text_field :address %>
 
-      <%= f.label :price, '価格(万円)' %>
-      <%= f.number_field :price %>
-
-      <%= f.label :area, '面積(m2)' %>
-      <%= f.number_field :area, step: "0.01" %>
+      <div class="row">
+        <div class="col-xs-6">
+          <%= f.label :lowest_price, '最低価格(万円)' %>
+          <%= f.number_field :lowest_price %>
+        </div>
+        <div class="col-xs-6">
+          <%= f.label :highest_price, '最高価格(万円)' %>
+          <%= f.number_field :highest_price %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <%= f.label :lowest_area, '最低面積' %>
+          <%= f.number_field :lowest_area, step: "0.01" %>
+        </div>
+        <div class="col-xs-6">
+          <%= f.label :highest_area, '最高面積' %>
+          <%= f.number_field :highest_area, step: "0.01" %>
+        </div>
+      </div>
 
       <%= f.label :kind, '種類' %>
       <%= f.select :kind, {'土地': 'land', '建物': 'building'} %>

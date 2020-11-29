@@ -8,7 +8,7 @@
       <ul>
         <li>[住所]<%= sellinfo.address %></li>
         <li>[価格]<%= sellinfo.price %>万円</li>
-        <li>[面積]<%= sellinfo.area %>m2</li>
+        <li>[面積]<%= sellinfo.area %></li>
         <li>[利回り]<%= sellinfo.yield %>%</li>
         <li>[業者名/名前]<%= sellinfo.name %></li>
         <li>[入手会]<%= sellinfo.meeting %></li>
@@ -19,8 +19,24 @@
       <p>＜買い情報＞</p>
       <ul>
         <li>[住所]<%= buyinfo.address %></li>
-        <li>[価格]<%= buyinfo.price %>万円</li>
-        <li>[面積]<%= buyinfo.area %>m2</li>
+        <li>[価格]
+          <% if buyinfo.lowest_price && buyinfo.highest_price %>
+            <%= buyinfo.lowest_price %> 〜 <%= buyinfo.highest_price %>万円
+          <% elsif buyinfo.lowest_price %>
+            <%= buyinfo.lowest_price %>万円
+          <% elsif buyinfo.highest_price %>
+            <%= buyinfo.highest_price %>万円
+          <% end %>
+        </li>
+        <li>[面積]
+          <% if buyinfo.lowest_area && buyinfo.highest_area %>
+            <%= buyinfo.lowest_area %> 〜 <%= buyinfo.highest_area %>
+          <% elsif buyinfo.lowest_area %>
+            <%= buyinfo.lowest_area %>
+          <% elsif buyinfo.highest_area %>
+            <%= buyinfo.highest_area %>
+          <% end %>
+        </li>
         <li>[業者名/名前]<%= buyinfo.name %></li>
         <li>[入手会]<%= buyinfo.meeting %></li>
         <li>[メモ]<%= buyinfo.memo %></li>

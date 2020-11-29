@@ -5,7 +5,7 @@ class BuyinfosController < ApplicationController
 
   def create
     @buyinfo = Buyinfo.new(buyinfo_params)
-    google_api_geocode(@buyinfo) if @buyinfo.valid? && @buyinfo.address != '東京23区'
+    google_api_geocode(@buyinfo) if @buyinfo.valid?
     if @buyinfo.save
       sellinfos = Sellinfo.all
       if sellinfos
@@ -22,6 +22,6 @@ class BuyinfosController < ApplicationController
 
   private
   def buyinfo_params
-    params.require(:buyinfo).permit(:address, :price, :area, :kind, :name, :meeting, :memo)
+    params.require(:buyinfo).permit(:address, :lowest_price, :highest_price, :lowest_area, :highest_area, :kind, :name, :meeting, :memo)
   end
 end

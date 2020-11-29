@@ -4,8 +4,10 @@ class CreateBuyinfos < ActiveRecord::Migration[6.0]
       t.string :address
       t.float :lat
       t.float :lng
-      t.integer :price
-      t.float :area
+      t.integer :lowest_price
+      t.integer :highest_price
+      t.float :lowest_area
+      t.float :highest_area
       t.integer :kind, null: false, default: 0
       t.string :name
       t.string :meeting

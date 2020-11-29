@@ -16,8 +16,10 @@ ActiveRecord::Schema.define(version: 2020_11_28_065500) do
     t.string "address"
     t.float "lat"
     t.float "lng"
-    t.integer "price"
-    t.float "area"
+    t.integer "lowest_price"
+    t.integer "highest_price"
+    t.float "lowest_area"
+    t.float "highest_area"
     t.integer "kind", default: 0, null: false
     t.string "name"
     t.string "meeting"
