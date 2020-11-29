@@ -44,4 +44,7 @@
       </ul>
     </div>
   </div>
+  <div class='btn-delete'>
+    <%= link_to '削除する', distance, method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'btn btn-danger' %>
+  </div>
 </li>
