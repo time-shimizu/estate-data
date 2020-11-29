@@ -20,6 +20,12 @@ class BuyinfosController < ApplicationController
     end
   end
 
+  def destroy
+    Buyinfo.find(params[:id]).destroy
+    flash[:success] = "削除しました"
+    redirect_to distances_path
+  end
+
   private
   def buyinfo_params
     params.require(:buyinfo).permit(:address, :lowest_price, :highest_price, :lowest_area, :highest_area, :kind, :name, :meeting, :memo)

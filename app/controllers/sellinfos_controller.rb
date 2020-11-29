@@ -25,6 +25,12 @@ class SellinfosController < ApplicationController
     end
   end
 
+  def destroy
+    Sellinfo.find(params[:id]).destroy
+    flash[:success] = "削除しました"
+    redirect_to distances_path
+  end
+
   private
   def sellinfo_params
     params.require(:sellinfo).permit(:address, :price, :area, :yield, :kind, :name, :meeting)
