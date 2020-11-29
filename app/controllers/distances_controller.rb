@@ -1,6 +1,8 @@
 class DistancesController < ApplicationController
+  PER = 20
+
   def index
-    @distances = Distance.all
+    @distances = Distance.page(params[:page]).per(PER)
   end
 
   def destroy
