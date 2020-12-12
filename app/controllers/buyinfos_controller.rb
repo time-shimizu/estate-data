@@ -20,6 +20,28 @@ class BuyinfosController < ApplicationController
     end
   end
 
+  def edit
+    @buyinfo = Buyinfo.find(params[:id])
+  end
+
+  def update
+    @buyinfo = Buyinfo.find(params[:id])
+    if @buyinfo.update_attributes(buyinfo_params)
+      google_api_geocode(@buyinfo)
+      @buyinfo.distances.destroy_all
+      sellinfos = Sellinfo.all
+      if sellinfos
+        sellinfos.each do |sellinfo|
+          resister_distance(sellinfo,@buyinfo)
+        end
+      end
+      flash[:success] = '更新できました'
+      redirect_to new_buyinfo_path
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     Buyinfo.find(params[:id]).destroy
     flash[:success] = "削除しました"

@@ -15,7 +15,8 @@
         <li>[種類]<%= kinds[sellinfo.kind] %></li>
       </ul>
       <div class='info-delete'>
-        <%= link_to '削除する', sellinfo, method: :delete, data: {confirm: '売り情報を削除しますか？'} %>
+        <%= link_to '編集 | ', edit_sellinfo_path(sellinfo) %>
+        <%= link_to '削除', sellinfo, method: :delete, data: {confirm: '売り情報を削除しますか？'} %>
       </div>
     </div>
     <div class = 'col-xs-12 col-sm-6'>
@@ -46,7 +47,8 @@
         <li>[種類]<%= kinds[buyinfo.kind] %></li>
       </ul>
       <div class='info-delete'>
-        <%= link_to '削除する', buyinfo, method: :delete, data: {confirm: '買い情報を削除しますか？'} %>
+        <%= link_to '編集 | ', edit_buyinfo_path(buyinfo) %>
+        <%= link_to '削除', buyinfo, method: :delete, data: {confirm: '買い情報を削除しますか？'} %>
       </div>
     </div>
   </div>
