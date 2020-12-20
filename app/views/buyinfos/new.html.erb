@@ -1,0 +1,46 @@
+<h1>買い情報登録</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @buyinfo, local: true) do |f| %>
+      <%= render 'shared/error_messages', object: @buyinfo %>
+      <%= f.label :address, '住所' %>
+      <%= f.text_field :address %>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <%= f.label :lowest_price, '最低価格(万円)' %>
+          <%= f.number_field :lowest_price %>
+        </div>
+        <div class="col-xs-6">
+          <%= f.label :highest_price, '最高価格(万円)' %>
+          <%= f.number_field :highest_price %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <%= f.label :lowest_area, '最低面積' %>
+          <%= f.number_field :lowest_area, step: "0.01" %>
+        </div>
+        <div class="col-xs-6">
+          <%= f.label :highest_area, '最高面積' %>
+          <%= f.number_field :highest_area, step: "0.01" %>
+        </div>
+      </div>
+
+      <%= f.label :kind, '種類' %>
+      <%= f.select :kind, {'土地': 'land', '建物': 'building'} %>
+
+      <%= f.label :name, '業者名/名前' %>
+      <%= f.text_field :name %>
+
+      <%= f.label :meeting, '入手会' %>
+      <%= f.text_field :meeting %>
+
+      <%= f.label :memo, 'メモ' %>
+      <%= f.text_area :memo %>
+
+      <%= f.submit "登録", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
