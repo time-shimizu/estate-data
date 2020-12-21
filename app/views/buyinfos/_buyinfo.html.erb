@@ -1,0 +1,28 @@
+<% kinds = {'land' => '土地', 'building' => '物件'} %>
+<ul>
+  <li>[住所]<%= buyinfo.address %></li>
+  <li>[価格]
+    <% if buyinfo.lowest_price && buyinfo.highest_price %>
+      <%= buyinfo.lowest_price %> 〜 <%= buyinfo.highest_price %>万円
+    <% elsif buyinfo.lowest_price %>
+      <%= buyinfo.lowest_price %>万円
+    <% elsif buyinfo.highest_price %>
+      <%= buyinfo.highest_price %>万円
+    <% end %>
+  </li>
+  <li>[面積]
+    <% if buyinfo.lowest_area && buyinfo.highest_area %>
+      <%= buyinfo.lowest_area %> 〜 <%= buyinfo.highest_area %>
+    <% elsif buyinfo.lowest_area %>
+      <%= buyinfo.lowest_area %>
+    <% elsif buyinfo.highest_area %>
+      <%= buyinfo.highest_area %>
+    <% end %>
+  </li>
+  <li>[業者名/名前]<%= buyinfo.name %></li>
+  <li>[入手会]<%= buyinfo.meeting %></li>
+  <li>[メモ]<%= buyinfo.memo %></li>
+  <li>[種類]<%= kinds[buyinfo.kind] %></li>
+</ul>
+<%= link_to '編集 | ', edit_buyinfo_path(buyinfo) %>
+<%= link_to '削除', buyinfo, method: :delete, data: {confirm: '買い情報を削除しますか？'} %>

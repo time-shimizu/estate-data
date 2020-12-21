@@ -1,9 +1,9 @@
-<h1>買い情報一覧</h1>
-<% if @buyinfos %>
+<h1>売り情報一覧</h1>
+<% if @sellinfos %>
   <ul class="users">
-    <%= render @buyinfos %>
+    <%= render @sellinfos %>
   </ul>
   <div class='kaminari'>
-    <%= paginate @buyinfos %>
+    <%= paginate @sellinfos %>
   </div>
 <% end %>
