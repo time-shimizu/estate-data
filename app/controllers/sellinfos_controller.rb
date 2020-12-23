@@ -2,9 +2,9 @@ class SellinfosController < ApplicationController
   PER = 20
 
   def index
-    #create失敗した後、リロードするとindexにとんでエラー起きるので
-    redirect_to new_sellinfo_path
+    @sellinfos = Sellinfo.page(params[:page]).per(PER)
   end
+
   def new
     @sellinfo = Sellinfo.new
   end
@@ -52,10 +52,6 @@ class SellinfosController < ApplicationController
     Sellinfo.find(params[:id]).destroy
     flash[:success] = "削除しました"
     redirect_to distances_path
-  end
-
-  def index
-    @sellinfos = Sellinfo.page(params[:page]).per(PER)
   end
 
   private

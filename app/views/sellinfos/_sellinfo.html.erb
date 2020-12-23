@@ -8,5 +8,7 @@
   <li>[入手会]<%= sellinfo.meeting %></li>
   <li>[種類]<%= kinds[sellinfo.kind] %></li>
 </ul>
-<%= link_to '編集 | ', edit_sellinfo_path(sellinfo) %>
-<%= link_to '削除', sellinfo, method: :delete, data: {confirm: '売り情報を削除しますか？'} %>
+<div class='info-delete'>
+  <%= link_to '編集 | ', edit_sellinfo_path(sellinfo) %>
+  <%= link_to '削除', sellinfo, method: :delete, data: {confirm: '売り情報を削除しますか？'} %>
+</div>

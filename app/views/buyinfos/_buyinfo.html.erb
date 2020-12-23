@@ -24,5 +24,7 @@
   <li>[メモ]<%= buyinfo.memo %></li>
   <li>[種類]<%= kinds[buyinfo.kind] %></li>
 </ul>
-<%= link_to '編集 | ', edit_buyinfo_path(buyinfo) %>
-<%= link_to '削除', buyinfo, method: :delete, data: {confirm: '買い情報を削除しますか？'} %>
+<div class='info-delete'>
+  <%= link_to '編集 | ', edit_buyinfo_path(buyinfo) %>
+  <%= link_to '削除', buyinfo, method: :delete, data: {confirm: '買い情報を削除しますか？'} %>
+</div>

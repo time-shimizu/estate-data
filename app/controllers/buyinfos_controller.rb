@@ -1,6 +1,10 @@
 class BuyinfosController < ApplicationController
   PER = 20
-  
+
+  def index
+    @buyinfos = Buyinfo.page(params[:page]).per(PER)
+  end
+
   def new
     @buyinfo = Buyinfo.new
   end
@@ -48,10 +52,6 @@ class BuyinfosController < ApplicationController
     Buyinfo.find(params[:id]).destroy
     flash[:success] = "削除しました"
     redirect_to distances_path
-  end
-
-  def index
-    @buyinfos = Buyinfo.page(params[:page]).per(PER)
   end
 
   private
