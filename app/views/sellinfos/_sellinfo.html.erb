@@ -1,0 +1,14 @@
+<% kinds = {'land' => '土地', 'building' => '物件'} %>
+<ul>
+  <li>[住所]<%= sellinfo.address %></li>
+  <li>[価格]<%= sellinfo.price %>万円</li>
+  <li>[面積]<%= sellinfo.area %></li>
+  <li>[利回り]<%= sellinfo.yield %>%</li>
+  <li>[業者名/名前]<%= sellinfo.name %></li>
+  <li>[入手会]<%= sellinfo.meeting %></li>
+  <li>[種類]<%= kinds[sellinfo.kind] %></li>
+</ul>
+<div class='info-delete'>
+  <%= link_to '編集 | ', edit_sellinfo_path(sellinfo) %>
+  <%= link_to '削除', sellinfo, method: :delete, data: {confirm: '売り情報を削除しますか？'} %>
+</div>

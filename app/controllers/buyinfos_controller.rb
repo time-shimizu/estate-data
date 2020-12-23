@@ -1,4 +1,10 @@
 class BuyinfosController < ApplicationController
+  PER = 20
+
+  def index
+    @buyinfos = Buyinfo.page(params[:page]).per(PER)
+  end
+
   def new
     @buyinfo = Buyinfo.new
   end

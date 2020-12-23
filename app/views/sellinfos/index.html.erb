@@ -1,0 +1,9 @@
+<h1>売り情報一覧</h1>
+<% if @sellinfos %>
+  <ul class="users">
+    <%= render @sellinfos %>
+  </ul>
+  <div class='kaminari'>
+    <%= paginate @sellinfos %>
+  </div>
+<% end %>
