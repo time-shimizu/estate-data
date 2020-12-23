@@ -25,13 +25,13 @@ namespace :task_resister do
       return if sellinfo.lat.nil? || buyinfo.lat.nil?
       if  Distance.where('(sellinfo_id=?) AND (buyinfo_id=?)',sellinfo.id,buyinfo.id).blank?
         distance = haversine_distance(latlng1: [sellinfo.lat, sellinfo.lng],latlng2: [buyinfo.lat, buyinfo.lng])
-        Distance.create(sellinfo_id: sellinfo.id, buyinfo_id: buyinfo.id, distance: distance)
+        Distance.create(sellinfo_id: sellinfo.id, buyinfo_id: buyinfo.id, distance: distance) if distance <= 10000
       end
     end
 
     sellinos = Sellinfo.all
     buyinfos = Buyinfo.all
-
+    Distance.destroy_all
     sellinos.each do |sellinfo|
       buyinfos.each do |buyinfo|
         resister_distance(sellinfo,buyinfo)
